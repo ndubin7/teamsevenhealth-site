@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taking you to our partner&hellip;</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .redirect { min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+  .redirect p { color: var(--text-secondary); font-size: 15px; margin: 0 0 8px; }
+  .redirect a { color: var(--accent); font-size: 14px; }
+  .redirect h1 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0 0 12px; }
+</style>
+
+<!-- Mgid Sensor. Only fires on our own domain, which is the entire reason
+     this page exists. Without it MGID cannot optimise toward offer clicks. -->
+<script type="text/javascript">
+(function() {
+    var d = document, w = window;
+    w.MgSensorData = w.MgSensorData || [];
+    w.MgSensorData.push({ cid: 988264, project: "a.mgid.com" });
+    var l = "a.mgid.com";
+    var n = d.getElementsByTagName("script")[0];
+    var s = d.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    var dt = !Date.now ? new Date().valueOf() : Date.now();
+    s.src = "https://" + l + "/mgsensor.js?d=" + dt;
+    n.parentNode.insertBefore(s, n);
+})();
+</script>
+
+<script src="analytics.js"></script>
+</head>
+<body>
+
+<div class="redirect">
+  <div>
+    <h1>Taking you to our partner</h1>
+    <p>One moment.</p>
+    <p><a id="manual" href="/">Continue now</a></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* Whitelist only. The destination is NEVER read from the query string,
+     only an offer key. This stops the page becoming an open redirect that a
+     third party could use to launder traffic through our domain.
+
+     TODO BEFORE LAUNCH: paste the real PerformCB tracking links once Margo
+     confirms approval. Until then every key falls through to '/'. */
+  var OFFER_LINKS = {
+    // trimrx: 'https://noklnk.com/x/PENDING_APPROVAL',
+    // gala:   'https://noklnk.com/x/PENDING_APPROVAL',
+    // altrx:  'https://noklnk.com/x/PENDING_APPROVAL'
+  };
+
+  var q      = new URLSearchParams(window.location.search);
+  var offer  = (q.get('offer') || '').toLowerCase();
+  var subid1 = q.get('subid1') || 'direct';   // MGID click id
+  var subid2 = q.get('subid2') || '';         // our session id
+  var base   = OFFER_LINKS[offer];
+
+  var dest;
+  if (base) {
+    var p = new URLSearchParams();
+    p.set('subid1', subid1);
+    p.set('subid2', subid2);
+    dest = base + '?' + p.toString();
+  } else {
+    dest = '/';
+  }
+  document.getElementById('manual').href = dest;
+
+  if (window.T7Analytics) {
+    window.T7Analytics.track('offer_redirect', {
+      offer_name: offer || 'unknown',
+      valid_offer: !!base,
+      click_id: subid2
+    });
+  }
+
+  /* 450ms lets the Sensor request leave the browser. replace() keeps this
+     page out of history so Back does not bounce the visitor through again. */
+  setTimeout(function () { window.location.replace(dest); }, 450);
+})();
+</script>
+
+<noscript>
+  <meta http-equiv="refresh" content="0;url=/">
+</noscript>
+
+</body>
+</html>
