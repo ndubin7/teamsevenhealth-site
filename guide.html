@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What medically supervised weight management actually involves | Team7 Health</title>
+<meta name="description" content="A plain-language look at how telehealth GLP-1 programs work, what the process involves, who they suit, and what to check before you sign up.">
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="styles.css">
+<script src="analytics.js"></script>
+<style>
+  /* ---- Advertorial-only styles. Scoped so shared pages are untouched. ---- */
+  .ad-label {
+    background: var(--text-primary);
+    color: #FAFAF8;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    padding: 9px 0;
+  }
+  .ad-label .wrap { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .ad-label strong { font-weight: 600; }
+  .ad-label span { color: #B9C4C9; }
+
+  .article { padding: 40px 0 120px; }
+  .measure { max-width: 660px; margin: 0 auto; }
+
+  .kicker {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1.headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(30px, 5.2vw, 46px);
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    margin: 0 0 20px;
+  }
+  .standfirst {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+  }
+  .byline {
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    margin-bottom: 36px;
+  }
+
+  .lead-img {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 44px;
+    display: block;
+    height: clamp(220px, 38vw, 380px);
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .article p { font-size: 17px; line-height: 1.75; margin: 0 0 22px; }
+  .article h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(23px, 3.4vw, 30px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 52px 0 18px;
+  }
+  .article h3 {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 30px 0 10px;
+  }
+  .article ul { margin: 0 0 22px; padding-left: 22px; }
+  .article li { font-size: 17px; line-height: 1.7; margin-bottom: 10px; }
+  .article a { color: var(--accent); }
+
+  .summary {
+    background: var(--accent-soft);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin: 0 0 44px;
+  }
+  .summary h2 { margin: 0 0 14px; font-size: 20px; }
+  .summary ul { margin: 0; padding-left: 20px; }
+  .summary li { font-size: 16px; margin-bottom: 8px; }
+
+  /* Process sequence - genuinely a sequence, so it is numbered */
+  .seq { margin: 30px 0 34px; border-top: 1px solid var(--border); }
+  .seq-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .seq-num {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--accent);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .seq-item h3 { margin: 0 0 6px; }
+  .seq-item p { margin: 0; font-size: 16px; color: var(--text-secondary); }
+
+  .compare { width: 100%; border-collapse: collapse; margin: 26px 0 30px; font-size: 15px; }
+  .compare th, .compare td {
+    text-align: left; padding: 13px 14px; border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  .compare th { font-weight: 600; font-size: 13px; color: var(--text-muted); }
+  .compare td:first-child { font-weight: 500; width: 34%; }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 22px;
+    margin: 30px 0 34px;
+  }
+  .callout p { margin: 0; font-family: var(--font-display); font-size: 21px; line-height: 1.5; color: var(--text-primary); }
+
+  .checklist { list-style: none; padding: 0; margin: 22px 0 30px; }
+  .checklist li {
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .checklist li::before {
+    content: "";
+    position: absolute; left: 0; top: 9px;
+    width: 14px; height: 8px;
+    border-left: 2px solid var(--success);
+    border-bottom: 2px solid var(--success);
+    transform: rotate(-45deg);
+  }
+
+  .cta-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 44px 0;
+    text-align: center;
+  }
+  .cta-block h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0 0 8px; }
+  .cta-block p { font-size: 15px; color: var(--text-secondary); margin: 0 0 20px; }
+  .cta-block .btn { width: 100%; max-width: 320px; }
+  .cta-note { font-size: 12px; color: var(--text-muted); margin: 14px 0 0; }
+
+  .disclosures {
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+  .disclosures p { font-size: 13px; line-height: 1.65; margin: 0 0 12px; }
+
+  /* Sticky mobile CTA */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    background: rgba(250,250,248,0.96);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
+    padding: 12px 16px;
+    display: none;
+  }
+  .sticky-cta .btn { width: 100%; }
+  @media (max-width: 900px) {
+    .sticky-cta { display: block; }
+    body { padding-bottom: 88px; }
+  }
+  @media (max-width: 480px) {
+    .article { padding-top: 26px; }
+    .summary { padding: 22px 20px; }
+    .cta-block { padding: 24px 20px; }
+    /* Do NOT use the padding shorthand on body here. It silently resets
+       padding-bottom from the 900px block and buries the disclosures. */
+    body { padding-bottom: 88px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Disclosure sits above everything. FTC requires it before the reader
+     reaches the advertising page, not buried at the bottom. -->
+<div class="ad-label">
+  <div class="wrap">
+    <strong>Sponsored</strong>
+    <span>This article contains affiliate links. We may receive a commission if you purchase through them.</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="/">Team7 Health</a>
+    <nav class="site-nav">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<div class="article">
+  <div class="wrap">
+
+    <div class="measure">
+      <p class="kicker">Weight management, explained</p>
+      <h1 class="headline">What medically supervised weight management actually involves</h1>
+      <p class="standfirst">Telehealth GLP-1 programs went from niche to everywhere in about three years. Here is a plain look at how they work, what the process asks of you, and the questions worth asking before you hand over a card.</p>
+      <p class="byline">Team7 Health editorial &middot; Updated September 2026 &middot; 6 minute read</p>
+    </div>
+
+    <img class="lead-img" src="https://images.pexels.com/photos/7579823/pexels-photo-7579823.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="A clinician talking with a patient during a consultation">
+
+    <div class="measure">
+
+      <div class="summary">
+        <h2>The short version</h2>
+        <ul>
+          <li>These are prescription programs. A licensed clinician reviews your history and decides whether medication is appropriate. Nobody is guaranteed a prescription.</li>
+          <li>Most low-cost programs supply <em>compounded</em> medication, which is not the same thing as the branded product and is not FDA-approved as a finished drug.</li>
+          <li>The intake is short. The commitment is not. Most programs bill monthly or annually.</li>
+          <li>Eligibility usually depends on BMI and medical history, and some conditions rule you out entirely.</li>
+        </ul>
+      </div>
+
+      <h2>Why appetite is the part people get wrong</h2>
+      <p>The standard story about weight is a story about willpower. Eat less, move more, and the rest follows. It is a tidy story and it holds up badly, because appetite is not a character trait. It is a signalling system, and it is a stubborn one.</p>
+      <p>GLP-1 is a hormone your gut releases after you eat. Among other jobs, it tells your brain that food has arrived and that it can stop asking for more. GLP-1 medications work on that same receptor. They do not add discipline. They change how loud the signal is.</p>
+      <p>That distinction matters, because it reframes what the medication is for. It is not a shortcut around effort. It is a way of making the effort land on a system that is actually listening.</p>
+
+      <div class="callout">
+        <p>The medication is not the program. The supervision is the program.</p>
+      </div>
+
+      <h2>What the process looks like</h2>
+      <p>Every telehealth provider structures this slightly differently, but the shape is consistent.</p>
+
+      <div class="seq">
+        <div class="seq-item">
+          <div class="seq-num">1</div>
+          <div>
+            <h3>A health questionnaire</h3>
+            <p>Usually a few minutes. Height and weight, medical history, current medications, anything that might interact or disqualify you.</p>
+          </div>
+        </div>
+        <div class="seq-item">
+          <div class="seq-num">2</div>
+          <div>
+            <h3>Clinician review</h3>
+            <p>A licensed provider reads your intake. Some programs do this by video, some asynchronously. They decide whether treatment is appropriate, and they may decide it is not.</p>
+          </div>
+        </div>
+        <div class="seq-item">
+          <div class="seq-num">3</div>
+          <div>
+            <h3>A plan, if prescribed</h3>
+            <p>Dosing usually starts low and increases over the first weeks. This is deliberate. Starting high is how people end up with side effects they were not warned about.</p>
+          </div>
+        </div>
+        <div class="seq-item">
+          <div class="seq-num">4</div>
+          <div>
+            <h3>Delivery and check-ins</h3>
+            <p>Medication ships from a licensed pharmacy. Ongoing contact with the provider is where dose changes and side effects get handled.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>See whether a program fits</h3>
+        <p>The intake questionnaire is free and takes a few minutes. A licensed provider reviews it before anything is prescribed.</p>
+        <a class="btn" href="/go.html?offer=trimrx" data-cta="mid-article">Check your eligibility</a>
+        <p class="cta-note">You will be taken to our partner's site. No prescription is guaranteed.</p>
+      </div>
+
+      <h2>Compounded and branded are not the same thing</h2>
+      <p>This is the part most articles skip, and it is the part that explains the price.</p>
+      <p>Branded GLP-1 medications are manufactured by large pharmaceutical companies and approved by the FDA as finished products. They typically cost well over a thousand dollars a month without insurance.</p>
+      <p>Compounded medication is prepared by a licensed compounding pharmacy against an individual prescription. It uses the same active ingredient, but the finished preparation is <strong>not individually reviewed by the FDA for safety, effectiveness or quality</strong>. That is the trade being made when a program costs under two hundred dollars a month.</p>
+
+      <table class="compare">
+        <tr>
+          <th></th>
+          <th>Branded</th>
+          <th>Compounded</th>
+        </tr>
+        <tr>
+          <td>FDA review of the finished product</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Prepared by</td>
+          <td>Pharmaceutical manufacturer</td>
+          <td>Licensed compounding pharmacy</td>
+        </tr>
+        <tr>
+          <td>Typical monthly cost without insurance</td>
+          <td>Over $1,000</td>
+          <td>Commonly $89 to $400</td>
+        </tr>
+        <tr>
+          <td>Regulatory outlook</td>
+          <td>Stable</td>
+          <td>Under active review</td>
+        </tr>
+      </table>
+
+      <p>Neither choice is automatically wrong. But you should know which one you are buying, and any program worth using will tell you plainly on its own site.</p>
+
+      <h2>Who these programs suit, and who they do not</h2>
+      <p>Eligibility is not a formality. Most programs screen on BMI, commonly around 27 and above, and medical history rules some people out regardless of what they weigh.</p>
+      <p>You are generally not eligible if you are pregnant or breastfeeding, if you have certain thyroid or endocrine conditions, or if you have a history of specific cancers. There are others. This is precisely what the intake is for, and it is why a program that promises a prescription before reviewing you is a program to walk away from.</p>
+      <p>Beyond eligibility, there is fit. These programs suit people who want structure and medical oversight rather than another plan to follow alone. They suit people who have tried the conventional route and found it did not hold. They suit less well anyone hoping for something that requires nothing of them, because dosing schedules, side effect management and regular check-ins all ask for attention.</p>
+
+      <h2>Six things worth checking before you sign up</h2>
+      <ul class="checklist">
+        <li><strong>Compounded or branded.</strong> If the site does not say clearly, that is your answer about how much else it is not saying.</li>
+        <li><strong>What the monthly price actually covers.</strong> Some providers price by dose, so month one and month four are different numbers.</li>
+        <li><strong>The billing term.</strong> Monthly, three months and annual plans are all common, and the headline price is often the annual one.</li>
+        <li><strong>Cancellation terms.</strong> Look for the notice period. Several programs require a few days' notice before the billing date.</li>
+        <li><strong>Refund policy.</strong> Prescription medication generally cannot be returned once dispensed, so refunds are usually narrow.</li>
+        <li><strong>Who the clinician is.</strong> Licensed in your state, and reachable after the first prescription, not only before it.</li>
+      </ul>
+
+      <p>None of this is a reason to avoid these programs. It is a reason to read before you buy, which is true of anything that bills monthly.</p>
+
+      <div class="cta-block">
+        <h3>Start with the questionnaire</h3>
+        <p>Free, a few minutes, and reviewed by a licensed provider. You will see the program details and pricing before you commit to anything.</p>
+        <a class="btn" href="/go.html?offer=trimrx" data-cta="end-of-article">Check your eligibility</a>
+        <p class="cta-note">You will be taken to our partner's site. No prescription is guaranteed.</p>
+      </div>
+
+      <div class="disclosures">
+        <p><strong>Advertising disclosure.</strong> This article is sponsored content. Team Seven Marketing LLC, operating as Team7 Health, receives a commission when a reader signs up with a partner program through a link on this page. This does not change the price you pay.</p>
+        <p><strong>Not medical advice.</strong> Team7 Health is a referral service. We do not provide medical advice, diagnosis or treatment, and we do not prescribe or dispense medication. Prescribing decisions are made by independent licensed clinicians employed by our partner programs.</p>
+        <p><strong>On compounded medication.</strong> Compounded drugs are not approved by the U.S. Food and Drug Administration. The FDA does not review compounded preparations for safety, effectiveness or quality before they are dispensed. Discuss the difference with a qualified healthcare professional before starting any prescription treatment.</p>
+        <p><strong>Results vary.</strong> Individual outcomes differ. No treatment outcome is promised or implied, and no prescription is guaranteed.</p>
+        <p>&copy; 2026 Team Seven Marketing LLC. <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="sticky-cta">
+  <a class="btn" href="/go.html?offer=trimrx" data-cta="sticky">Check your eligibility</a>
+</div>
+
+<script>
+(function () {
+  if (!window.T7Analytics) return;
+
+  T7Analytics.track('page_view_advertorial', { page_variant: 'advertorial_v1' });
+
+  // Attach attribution to every outbound offer link at click time.
+  document.querySelectorAll('a[href^="/go.html"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      T7Analytics.track('offer_clickout', {
+        offer_name: 'trimrx',
+        source: a.getAttribute('data-cta') || 'unknown'
+      });
+    });
+    var u = new URL(a.getAttribute('href'), window.location.origin);
+    u.searchParams.set('subid1', T7Attribution.mgidClickId() || 'direct');
+    u.searchParams.set('subid2', T7Analytics.sessionId());
+    a.setAttribute('href', u.pathname + u.search);
+  });
+
+  // Fire once when the sticky bar first becomes visible to the reader.
+  var sticky = document.querySelector('.sticky-cta');
+  if (sticky && getComputedStyle(sticky).display !== 'none') {
+    T7Analytics.track('sticky_cta_shown', {});
+  }
+})();
+</script>
+
+</body>
+</html>
