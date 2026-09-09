@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team7 Health | GLP-1 Matching Questionnaire</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  .quiz-shell { padding: 48px 0 80px; }
+  .quiz-card {
+    max-width: 560px; margin: 0 auto;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 44px 40px; box-shadow: 0 1px 3px rgba(22,35,43,0.04);
+  }
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; }
+  .quiz-head { text-align: center; margin-bottom: 32px; }
+  .quiz-head h1 { font-family: var(--font-display); font-weight: 500; font-size: 26px; margin: 0 0 8px; }
+  .quiz-head p { color: var(--text-secondary); font-size: 14px; margin: 0; max-width: 40ch; margin: 0 auto; }
+  .option-btn {
+    display: block; width: 100%; text-align: left; padding: 16px 20px; margin-bottom: 12px;
+    border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+    font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--text-primary);
+    cursor: pointer; transition: all 0.15s ease;
+  }
+  .option-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .back-link {
+    display: inline-block; margin-top: 20px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted);
+    text-decoration: none; background: none; border: none; cursor: pointer;
+  }
+  .back-link:hover { color: var(--accent); }
+  .field-label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 8px; }
+  .field-input {
+    width: 100%; padding: 13px 16px; margin-bottom: 18px; border: 1px solid var(--border);
+    border-radius: 10px; font-family: var(--font-body); font-size: 14px; color: var(--text-primary);
+    background: var(--bg);
+  }
+  .field-input:focus { outline: none; border-color: var(--accent); }
+  .privacy-line { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; font-size: 12px; color: var(--text-muted); }
+  .result-icon {
+    width: 64px; height: 64px; border-radius: 50%; background: var(--success-soft); color: var(--success);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;
+  }
+  .quiz-banner { width: 100%; max-width: 560px; margin: 0 auto 28px; display: block; height: 160px; object-fit: cover; border-radius: 16px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class='logo' href='/'>Team7 Health</a>
+    <nav class="site-nav">
+      <a href='/privacy'>Privacy</a>
+      <a href='/terms'>Terms</a>
+    </nav>
+  </div>
+</header>
+
+<div class="quiz-shell wrap">
+  <img class="quiz-banner" src="https://images.pexels.com/photos/8376236/pexels-photo-8376236.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="A physician giving an online telehealth consultation">
+
+  <div class="quiz-card">
+
+    <div id="step-1" class="quiz-step active">
+      <div class="quiz-head">
+        <h1>Target weight reduction</h1>
+        <p>How much weight are you hoping to lose?</p>
+      </div>
+      <button class="option-btn" onclick="nextStep(2)">10 – 20 lbs</button>
+      <button class="option-btn" onclick="nextStep(2)">21 – 40 lbs</button>
+      <button class="option-btn" onclick="nextStep(2)">41+ lbs</button>
+    </div>
+
+    <div id="step-2" class="quiz-step">
+      <div class="quiz-head">
+        <h1>A little history</h1>
+        <p>Have you previously used a GLP-1 medication (like semaglutide or tirzepatide)?</p>
+      </div>
+      <button class="option-btn" onclick="nextStep(3)">Yes, I'm currently taking it</button>
+      <button class="option-btn" onclick="nextStep(3)">Yes, but I stopped</button>
+      <button class="option-btn" onclick="nextStep(3)">No, I've never tried it</button>
+      <button class="back-link" onclick="prevStep(1)">&larr; Back</button>
+    </div>
+
+    <div id="step-3" class="quiz-step">
+      <div class="quiz-head">
+        <h1>See your matches</h1>
+        <p>Enter your details and we'll show you programs that may fit.</p>
+      </div>
+      <form id="lead-form" onsubmit="submitForm(event)">
+        <label class="field-label">First name</label>
+        <input type="text" required class="field-input" placeholder="Your name">
+        <label class="field-label">Email address</label>
+        <input type="email" required class="field-input" placeholder="you@example.com">
+        <button type="submit" class="btn" style="width:100%;">View my matches</button>
+      </form>
+      <div class="privacy-line"><i class="ti ti-lock"></i> Your information is kept private and never sold</div>
+      <button class="back-link" onclick="prevStep(2)">&larr; Back</button>
+    </div>
+
+    <div id="step-4" class="quiz-step" style="text-align:center; padding: 12px 0;">
+      <div class="result-icon"><i class="ti ti-check" style="font-size:28px;"></i></div>
+      <h1 style="font-family:var(--font-display); font-weight:500; font-size:24px; margin:0 0 12px;">You may be a good fit</h1>
+      <p style="color:var(--text-secondary); font-size:14px; line-height:1.6; max-width:38ch; margin:0 auto 28px;">Based on your answers, GLP-1 weight-management programs in our partner network may be worth exploring. Continue to see options available in your area.</p>
+      <a href="#" class="btn" style="width:100%;">Continue to provider <i class="ti ti-arrow-right"></i></a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links">
+      <a href='/privacy'>Privacy Policy</a>
+      <a href='/terms'>Terms of Service</a>
+    </div>
+    <p class="copyright">&copy; 2026 Team Seven Health. Team7 Health is a referral service and does not provide medical advice, diagnosis, or treatment.</p>
+  </div>
+</footer>
+
+<script>
+  function nextStep(step) {
+    document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step-' + step).classList.add('active');
+  }
+  function prevStep(step) { nextStep(step); }
+  function submitForm(event) {
+    event.preventDefault();
+    // In production this should send the data to your CRM before showing results
+    nextStep(4);
+  }
+</script>
+
+</body>
+</html>
