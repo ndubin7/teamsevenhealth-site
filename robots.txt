@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /go.html
+
+Sitemap: https://teamsevenhealth.com/sitemap.xml
