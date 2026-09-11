@@ -152,7 +152,7 @@
   .cta-block h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0 0 8px; }
   .cta-block p { font-size: 15px; color: var(--text-secondary); margin: 0 0 20px; }
   .cta-block .btn { width: 100%; max-width: 320px; }
-  .cta-note { font-size: 12px; color: var(--text-muted); margin: 14px 0 0; }
+  .cta-note { font-size: 12px; color: var(--text-muted); margin: 20px 0 0; }
 
   .disclosures {
     margin-top: 60px;
@@ -186,6 +186,24 @@
        padding-bottom from the 900px block and buries the disclosures. */
     body { padding-bottom: 88px; }
   }
+
+  /* Buttons inside the article inherit .article a { color: accent }, which made the
+     label teal-on-teal. Force white on every state. */
+  .article a.btn, .article a.btn:visited, .sticky-cta a.btn, .sticky-cta a.btn:visited { color: #fff; }
+  .btn.cta { font-size: 17px; padding: 16px 30px; min-height: 54px; border-radius: 10px;
+             box-shadow: 0 8px 20px rgba(31,111,120,0.28); letter-spacing: 0.01em; }
+  .btn.cta .arrow { display: inline-block; transition: transform 0.15s ease; }
+  .btn.cta:hover .arrow { transform: translateX(3px); }
+
+  /* Lead photo: our own photography, slow cinematic zoom instead of a heavy video */
+  .lead-figure { margin: 6px auto 28px; max-width: 900px; aspect-ratio: 16 / 9;
+                 border-radius: 16px; overflow: hidden; background: #1c2b30; }
+  .lead-figure img { width: 100%; height: 100%; object-fit: cover; display: block;
+                     transform-origin: 62% 48%; animation: t7zoom 26s ease-out forwards; }
+  @keyframes t7zoom { from { transform: scale(1); } to { transform: scale(1.09); } }
+  figure.inline { margin: 34px 0 30px; }
+  figure.inline img { width: 100%; height: auto; display: block; border-radius: 12px; }
+  @media (max-width: 480px) { .lead-figure { border-radius: 0; width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); } }
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
   }
@@ -218,11 +236,14 @@
     <div class="measure">
       <p class="kicker">Weight management, explained</p>
       <h1 class="headline">What medically supervised weight management actually involves</h1>
+    </div>
+    <figure class="lead-figure"><img src="/assets/images/guide-hero-1600.jpg" srcset="/assets/images/guide-hero-800.jpg 800w, /assets/images/guide-hero-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 900px" width="1600" height="893" fetchpriority="high" alt="Two friends talking over tea at a kitchen table in the evening"></figure>
+    <div class="measure">
       <p class="standfirst">Telehealth GLP-1 programs went from niche to everywhere in about three years. Here is a plain look at how they work, what the process asks of you, and the questions worth asking before you hand over a card.</p>
       <p class="byline">Team7 Health editorial &middot; Updated September 2026 &middot; 6 minute read</p>
     </div>
 
-    <img class="lead-img" src="https://images.pexels.com/photos/7579823/pexels-photo-7579823.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="A clinician talking with a patient during a consultation">
+    
 
     <div class="measure">
 
@@ -248,7 +269,8 @@
       <h2>What the process looks like</h2>
       <p>Every telehealth provider structures this slightly differently, but the shape is consistent.</p>
 
-      <div class="seq">
+      <figure class="inline"><img src="/assets/images/guide-consult-1200.jpg" srcset="/assets/images/guide-consult-700.jpg 700w, /assets/images/guide-consult-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 680px" width="1200" height="800" loading="lazy" alt="A laptop on a kitchen table during an online consultation with a clinician"></figure>
+<div class="seq">
         <div class="seq-item">
           <div class="seq-num">1</div>
           <div>
@@ -282,7 +304,7 @@
       <div class="cta-block">
         <h3>See whether a program fits</h3>
         <p>The intake questionnaire is free and takes a few minutes. A licensed provider reviews it before anything is prescribed.</p>
-        <a class="btn" href="/go.html?offer=trimrx" data-cta="mid-article">Check your eligibility</a>
+        <a class="btn cta" href="/go.html?offer=trimrx" data-cta="mid-article">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
         <p class="cta-note">You will be taken to our partner's site. No prescription is guaranteed.</p>
       </div>
 
@@ -321,7 +343,8 @@
 
       <p>Neither choice is automatically wrong. But you should know which one you are buying, and any program worth using will tell you plainly on its own site.</p>
 
-      <h2>Who these programs suit, and who they do not</h2>
+      <figure class="inline"><img src="/assets/images/guide-evening-1200.jpg" srcset="/assets/images/guide-evening-700.jpg 700w, /assets/images/guide-evening-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 680px" width="1200" height="670" loading="lazy" alt="A woman relaxing on a sofa at home in warm evening lamplight"></figure>
+<h2>Who these programs suit, and who they do not</h2>
       <p>Eligibility is not a formality. Most programs screen on BMI, commonly around 27 and above, and medical history rules some people out regardless of what they weigh.</p>
       <p>You are generally not eligible if you are pregnant or breastfeeding, if you have certain thyroid or endocrine conditions, or if you have a history of specific cancers. There are others. This is precisely what the intake is for, and it is why a program that promises a prescription before reviewing you is a program to walk away from.</p>
       <p>Beyond eligibility, there is fit. These programs suit people who want structure and medical oversight rather than another plan to follow alone. They suit people who have tried the conventional route and found it did not hold. They suit less well anyone hoping for something that requires nothing of them, because dosing schedules, side effect management and regular check-ins all ask for attention.</p>
@@ -341,7 +364,7 @@
       <div class="cta-block">
         <h3>Start with the questionnaire</h3>
         <p>Free, a few minutes, and reviewed by a licensed provider. You will see the program details and pricing before you commit to anything.</p>
-        <a class="btn" href="/go.html?offer=trimrx" data-cta="end-of-article">Check your eligibility</a>
+        <a class="btn cta" href="/go.html?offer=trimrx" data-cta="end-of-article">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
         <p class="cta-note">You will be taken to our partner's site. No prescription is guaranteed.</p>
       </div>
 
@@ -349,6 +372,7 @@
         <p><strong>Advertising disclosure.</strong> This article is sponsored content. Team Seven Marketing LLC, operating as Team7 Health, receives a commission when a reader signs up with a partner program through a link on this page. This does not change the price you pay.</p>
         <p><strong>Not medical advice.</strong> Team7 Health is a referral service. We do not provide medical advice, diagnosis or treatment, and we do not prescribe or dispense medication. Prescribing decisions are made by independent licensed clinicians employed by our partner programs.</p>
         <p><strong>On compounded medication.</strong> Compounded drugs are not approved by the U.S. Food and Drug Administration. The FDA does not review compounded preparations for safety, effectiveness or quality before they are dispensed. Discuss the difference with a qualified healthcare professional before starting any prescription treatment.</p>
+        <p><strong>Images.</strong> Photographs on this page are illustrative. They do not depict patients or treatment results.</p>
         <p><strong>Results vary.</strong> Individual outcomes differ. No treatment outcome is promised or implied, and no prescription is guaranteed.</p>
         <p>&copy; 2026 Team Seven Marketing LLC. <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></p>
       </div>
@@ -358,7 +382,7 @@
 </div>
 
 <div class="sticky-cta">
-  <a class="btn" href="/go.html?offer=trimrx" data-cta="sticky">Check your eligibility</a>
+  <a class="btn cta" href="/go.html?offer=trimrx" data-cta="sticky">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
 </div>
 
 <script>
