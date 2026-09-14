@@ -52,13 +52,34 @@
      TODO BEFORE LAUNCH: paste the real PerformCB tracking links once Margo
      confirms approval. Until then every key falls through to '/'. */
   var OFFER_LINKS = {
-    // trimrx: 'https://noklnk.com/x/PENDING_APPROVAL',
-    // gala:   'https://noklnk.com/x/PENDING_APPROVAL',
-    // altrx:  'https://noklnk.com/x/PENDING_APPROVAL'
+    trimrx: 'https://noklnk.com/x/6042878',   // (1000603) TrimRx Premium DTQ - US - CPS - $320
+    gala:   'https://noklnk.com/x/6042879'    // (1000629) Gala GLP-1 - US - CPS - $425
   };
+
+  /* Vendor split. offer=auto sends a controlled 50/50 to the two vendors so we
+     can compare EARNINGS PER CLICK, not conversion rate: Gala pays $425 vs
+     TrimRx $320, so Gala can convert ~25% worse and still earn more.
+     The choice is sticky per visitor, otherwise a returning visitor's sale
+     could be credited against the vendor they did not actually see. */
+  var SPLIT = ['trimrx', 'gala'];
+
+  function pickVendor() {
+    var k = 't7_vendor';
+    try {
+      var saved = localStorage.getItem(k);
+      if (saved && OFFER_LINKS[saved]) return saved;
+      var chosen = SPLIT[Math.floor(Math.random() * SPLIT.length)];
+      localStorage.setItem(k, chosen);
+      return chosen;
+    } catch (e) {
+      return SPLIT[Math.floor(Math.random() * SPLIT.length)];
+    }
+  }
 
   var q      = new URLSearchParams(window.location.search);
   var offer  = (q.get('offer') || '').toLowerCase();
+  var split  = (offer === 'auto' || offer === '');
+  if (split) { offer = pickVendor(); }
   var subid1 = q.get('subid1') || 'direct';   // MGID click id
   var subid2 = q.get('subid2') || '';         // our session id
   var base   = OFFER_LINKS[offer];
@@ -68,6 +89,7 @@
     var p = new URLSearchParams();
     p.set('subid1', subid1);
     p.set('subid2', subid2);
+    p.set('subid3', offer);
     dest = base + '?' + p.toString();
   } else {
     dest = '/';
@@ -78,6 +100,7 @@
     window.T7Analytics.track('offer_redirect', {
       offer_name: offer || 'unknown',
       valid_offer: !!base,
+      assignment: split ? 'split' : 'forced',
       click_id: subid2
     });
   }

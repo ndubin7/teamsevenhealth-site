@@ -4,16 +4,15 @@
  * Design rule carried over from CreditKeys: attribution and page variant are
  * merged into every event inside track(), so no call site can forget them.
  *
- * BEFORE LAUNCH:
- *   1. Replace GA4_MEASUREMENT_ID below with the real G-XXXXXXXXXX.
- *   2. Register these GA4 custom dimensions (Admin > Data display > Custom
- *      definitions, scope: Event) BEFORE any traffic runs. Registration is
- *      NOT retroactive: offer_name, page_variant, source.
+ * GA4 property: Team7 Health (stream 15775958415, teamsevenhealth.com).
+ * Custom dimensions registered (event scope): offer_name, page_variant, source.
+ * Registration is NOT retroactive, so never add a new dimension after traffic
+ * starts and expect back-dated data.
  */
 (function () {
   'use strict';
 
-  var GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  var GA4_MEASUREMENT_ID = 'G-ZG1FVS8ZS3';
 
   /* ---------- gtag bootstrap ---------- */
   var s = document.createElement('script');
