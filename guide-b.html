@@ -354,6 +354,8 @@
     var u = new URL(a.getAttribute('href'), window.location.origin);
     u.searchParams.set('subid1', T7Attribution.mgidClickId() || 'direct');
     u.searchParams.set('subid2', T7Analytics.sessionId());
+      u.searchParams.set('src', a.getAttribute('data-cta') || 'unknown');
+      u.searchParams.set('pv', 'advertorial_v2_qualify');
     a.setAttribute('href', u.pathname + u.search);
   });
 

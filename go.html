@@ -82,6 +82,8 @@
   if (split) { offer = pickVendor(); }
   var subid1 = q.get('subid1') || 'direct';   // MGID click id
   var subid2 = q.get('subid2') || '';         // our session id
+  var src    = q.get('src') || 'unknown';     // which CTA was clicked
+  var pv     = q.get('pv')  || '';            // advertorial variant
   var base   = OFFER_LINKS[offer];
 
   var dest;
@@ -99,6 +101,8 @@
   if (window.T7Analytics) {
     window.T7Analytics.track('offer_redirect', {
       offer_name: offer || 'unknown',
+      source: src,
+      page_variant: pv,
       valid_offer: !!base,
       assignment: split ? 'split' : 'forced',
       click_id: subid2
