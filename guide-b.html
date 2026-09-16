@@ -189,11 +189,18 @@
     backdrop-filter: blur(8px);
     border-top: 1px solid var(--border);
     padding: 12px 16px;
-    display: none;
+    display: block;
   }
-  .sticky-cta .btn { width: 100%; }
+  .sticky-cta .btn { width: 100%; max-width: 420px; }
+  /* Revealed once the reader scrolls past the opening, so it reads as a helpful
+     shortcut rather than an ad bar sitting on the article from the first second. */
+  .sticky-cta.is-visible { display: block; transform: translateY(0); }
+  .sticky-cta {
+    transform: translateY(110%);
+    transition: transform .28s ease;
+    text-align: center;
+  }
   @media (max-width: 900px) {
-    .sticky-cta { display: block; }
     body { padding-bottom: 88px; }
   }
   @media (max-width: 480px) {
@@ -385,9 +392,26 @@
 
   // Fire once when the sticky bar first becomes visible to the reader.
   var sticky = document.querySelector('.sticky-cta');
-  if (sticky && getComputedStyle(sticky).display !== 'none') {
-    T7Analytics.track('sticky_cta_shown', {});
+  var endCta = document.querySelector('[data-cta="end-of-article"]');
+  var stickySeen = false;
+  function updateSticky() {
+    if (!sticky) return;
+    var past = window.scrollY > window.innerHeight * 0.9;      // read past the opening
+    var atEnd = false;
+    if (endCta) {
+      var r = endCta.getBoundingClientRect();
+      atEnd = r.top < window.innerHeight && r.bottom > 0;       // real CTA on screen
+    }
+    var show = past && !atEnd;
+    sticky.classList.toggle('is-visible', show);
+    if (show && !stickySeen) {
+      stickySeen = true;
+      T7Analytics.track('sticky_cta_shown', {});
+    }
   }
+  window.addEventListener('scroll', updateSticky, { passive: true });
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
 })();
 </script>
 
