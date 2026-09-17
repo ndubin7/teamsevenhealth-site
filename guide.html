@@ -25,19 +25,64 @@
     n.parentNode.insertBefore(s, n);
 })();
 </script>
+<script>
+/* Ad scent: the page must look like the continuation of the ad that was clicked.
+   Match on the MGID ad id (t7_ad); fall back to keywords in the ad title (t7_title)
+   so new ads still match without a code change. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var ad = q.get('t7_ad') || '';
+  var title = (q.get('t7_title') || '').toLowerCase();
+  var byId = {
+    '27940521':'kitchen','27940523':'kitchen','27940525':'kitchen',
+    '27940522':'doorstep','27940528':'doorstep',
+    '27940512':'barbershop',
+    '27940529':'phone','27940520':'phone',
+    '27940518':'consult','27940519':'consult',
+    '27940516':'2am','27940515':'2am'
+  };
+  var byWord = [
+    ['door','doorstep'],['pharmacy','doorstep'],['approves','doorstep'],
+    ['friends','kitchen'],['people actually ask','kitchen'],['plain language','kitchen'],
+    ['hype','barbershop'],['ask before','barbershop'],['first questions','barbershop'],
+    ['involves','phone'],['online weight-loss prescriptions','phone'],['start to finish','phone'],
+    ['from home','consult'],['provider','consult'],['consultation','consult'],
+    ['start here','2am'],['before starting','2am'],['plain guide','2am']
+  ];
+  var c = byId[ad];
+  if (!c && title) for (var i = 0; i < byWord.length; i++) if (title.indexOf(byWord[i][0]) !== -1) { c = byWord[i][1]; break; }
+  if (!c) return;
+  var H = {
+    '2am':       ['Quietly looking into weight-loss medication? Here is what to know first','A woman reading on her phone at night'],
+    'doorstep':  ['How prescription weight loss actually gets to your door','A delivery box on a front porch'],
+    'kitchen':   ['What people actually ask about weight-loss medication','Two friends talking in a kitchen'],
+    'barbershop':['Weight-loss medication, without the hype: what to ask first','Two men talking in a barbershop'],
+    'phone':     ['What weight-loss medication actually involves, start to finish','Reading about weight-loss medication on a phone'],
+    'consult':   ['How prescription weight loss works from home','An online consultation on a laptop at a kitchen table']
+  };
+  try { sessionStorage.setItem('t7_hero', c); } catch (e) {}
+  function apply() {
+    var img = document.getElementById('hero-img'), h1 = document.getElementById('headline');
+    if (img) { img.src = '/assets/images/hero-'+c+'-1200.jpg'; img.srcset = '/assets/images/hero-'+c+'-700.jpg 700w, /assets/images/hero-'+c+'-1200.jpg 1200w'; img.alt = H[c][1]; }
+    if (h1) h1.textContent = H[c][0];
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply); else apply();
+})();
+</script>
 <script src="analytics.js"></script>
 <style>
   /* ---- Advertorial-only styles. Scoped so shared pages are untouched. ---- */
   .ad-label {
-    background: var(--text-primary);
-    color: #FAFAF8;
+    background: #f3f4f6;
+    color: #5b6470;
     font-size: 12px;
-    letter-spacing: 0.02em;
-    padding: 9px 0;
+    line-height: 1.3;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
   }
   .ad-label .wrap { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
   .ad-label strong { font-weight: 600; }
-  .ad-label span { color: #B9C4C9; }
+  .ad-label span { color: #6b7480; }
 
   .article { padding: 40px 0 120px; }
   .measure { max-width: 660px; margin: 0 auto; }
@@ -205,6 +250,8 @@
   }
   @media (max-width: 480px) {
     .article { padding-top: 26px; }
+    .lead-figure { aspect-ratio: auto; }
+    .lead-figure img { max-height: 210px; }
     .summary { padding: 22px 20px; }
     .cta-block { padding: 24px 20px; }
     /* Do NOT use the padding shorthand on body here. It silently resets
@@ -243,8 +290,7 @@
      reaches the advertising page, not buried at the bottom. -->
 <div class="ad-label">
   <div class="wrap">
-    <strong>Sponsored</strong>
-    <span>This article contains affiliate links. We may receive a commission if you purchase through them.</span>
+    <span><strong>Sponsored</strong> &middot; Contains affiliate links; we may earn a commission.</span>
   </div>
 </div>
 
@@ -263,9 +309,9 @@
 
     <div class="measure">
       <p class="kicker">Weight loss, explained</p>
-      <h1 class="headline">Why so many people are now trying prescription weight loss, and how to see if you qualify</h1>
+      <h1 class="headline" id="headline">Why so many people are now trying prescription weight loss, and how to see if you qualify</h1>
     </div>
-    <figure class="lead-figure"><img src="/assets/images/guide-hero-1600.jpg" srcset="/assets/images/guide-hero-800.jpg 800w, /assets/images/guide-hero-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 900px" width="1600" height="893" fetchpriority="high" alt="Two friends talking over tea at a kitchen table in the evening"></figure>
+    <figure class="lead-figure"><img id="hero-img" src="/assets/images/hero-phone-1200.jpg" srcset="/assets/images/hero-phone-700.jpg 700w, /assets/images/hero-phone-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 900px" width="1200" height="675" fetchpriority="high" alt="Reading about weight-loss medication on a phone"></figure>
     <div class="measure">
       <p class="standfirst">Most people assume these programs are not for them. Often they are wrong, and they never find out. Here is what prescription weight-loss programs actually involve, who qualifies, and how to check from home in a few minutes.</p>
       <p class="byline">Team7 Health editorial &middot; Updated September 2026 &middot; 4 minute read</p>
@@ -380,7 +426,8 @@
 (function () {
   if (!window.T7Analytics) return;
 
-  T7Analytics.track('page_view_advertorial', { page_variant: 'advertorial_v1' });
+  T7Analytics.track('page_view_advertorial', {
+      hero: (function(){ try { return sessionStorage.getItem('t7_hero') || 'default'; } catch(e){ return 'default'; } })(), page_variant: 'advertorial_v1' });
 
   // Attach attribution to every outbound offer link at click time.
   document.querySelectorAll('a[href^="/go.html"]').forEach(function (a) {
