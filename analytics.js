@@ -109,7 +109,7 @@
     var h = document.documentElement.scrollHeight - window.innerHeight;
     if (h <= 0) return;
     var pct = (window.scrollY / h) * 100;
-    [50, 90].forEach(function (mark) {
+    [25, 50, 75, 90].forEach(function (mark) {
       if (pct >= mark && !depthFired[mark]) {
         depthFired[mark] = true;
         Analytics.track('scroll_depth', { percent_scrolled: mark });
