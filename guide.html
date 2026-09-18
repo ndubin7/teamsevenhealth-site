@@ -298,6 +298,29 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
   }
+
+  /* ---- sticky top CTA bar (shared pattern with the oral advertorial) ---- */
+  .topbar {
+    position: sticky; top: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: center; gap: 18px;
+    padding: 9px 18px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 10px rgba(20,33,61,.05);
+  }
+  .topbar p { margin: 0; font-size: 14px; font-weight: 600; }
+  .topbar .btn { width: auto; flex: 0 0 auto; padding: 9px 18px; font-size: 14px; white-space: nowrap; }
+  .topbar a.btn, .topbar a.btn:visited { color: #fff; }
+
+  .cta-block .btn {
+    width: auto; max-width: none;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    white-space: nowrap; padding: 14px 30px;
+  }
+
+  @media (max-width: 640px) { .topbar { display: none; } }
+  @media (min-width: 641px) { .sticky-cta { display: none !important; } }
+  @media (max-width: 480px) { .cta-block .btn { width: 100%; white-space: normal; padding: 14px 18px; } }
 </style>
 </head>
 <body>
@@ -319,6 +342,11 @@
     </nav>
   </div>
 </header>
+
+<div class="topbar">
+  <p>Prescription weight loss, explained in plain language.</p>
+  <a class='btn cta' data-cta='topbar' href='/go?offer=auto'>Check if you qualify <span class="arrow" aria-hidden="true">&rarr;</span></a>
+</div>
 
 <div class="article">
   <div class="wrap">
