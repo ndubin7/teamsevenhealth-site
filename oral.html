@@ -289,6 +289,34 @@
     .cta-inline .btn { width: 100%; }
     .lead-figure img { max-height: none; }
   }
+
+  /* ---- oral_v1b: sticky top CTA, and stop the hero cropping the face off ---- */
+  .topbar {
+    position: sticky; top: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: center; gap: 18px;
+    padding: 9px 18px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 10px rgba(20,33,61,.05);
+  }
+  .topbar p { margin: 0; font-size: 14px; font-weight: 600; }
+  .topbar .btn { width: auto; flex: 0 0 auto; padding: 9px 18px; font-size: 14px; }
+  .topbar a.btn, .topbar a.btn:visited { color: #fff; }
+
+  /* The 16:9 hero was being squeezed into a 3.3:1 letterbox, which cut the head off.
+     Give it a sane ratio and bias the crop upward toward the face. */
+  .lead-figure { height: auto; aspect-ratio: 16 / 8; margin: 2px auto 20px; }
+  .lead-figure img { object-position: 50% 26%; animation: none; transform: none; }
+
+  @media (max-width: 640px) {
+    /* One sticky bar, not two: phones keep the bottom bar, which is easier to reach. */
+    .topbar { display: none; }
+    .lead-figure { aspect-ratio: 16 / 9; }
+    .lead-figure img { object-position: 50% 22%; }
+  }
+  @media (min-width: 641px) {
+    .sticky-cta { display: none !important; }
+  }
 </style>
 
 <body>
@@ -311,13 +339,18 @@
   </div>
 </header>
 
+<div class="topbar">
+  <p>Prescription weight loss, now in pill form.</p>
+  <a class='btn cta' data-cta='topbar' href='/go?offer=medgm'>Check if you qualify <span class="arrow" aria-hidden="true">&rarr;</span></a>
+</div>
+
 <div class="article">
   <div class="wrap">
 
     <div class="measure">
       <p class="kicker">Weight loss, explained</p>
       <h1 class="headline" id="headline">The needle is the reason a lot of people never start. There is a pill option.</h1>
-      <p class="standfirst">Plenty of people rule out medical weight-loss programs for a single reason, and it is not the cost or the clinic visit. It is the injection. Here is how the pill option works, who it suits, and what a licensed clinician looks at before prescribing anything.</p>
+      <p class="standfirst">Plenty of people rule out medical weight-loss programs for a single reason, and it is not the cost or the clinic visit. <strong>It is the injection.</strong> Here is how the pill option works, who it suits, and what a licensed clinician looks at before prescribing anything.</p>
     </div>
     <figure class="lead-figure"><img id="hero-img" src="/assets/images/hero-oral-1200.jpg" srcset="/assets/images/hero-oral-700.jpg 700w, /assets/images/hero-oral-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 900px" width="1200" height="675" fetchpriority="high" alt="A woman at a kitchen table with a glass of water"></figure>
     <div class="measure">
@@ -332,11 +365,11 @@
       <div class="summary">
         <h2>The short version</h2>
         <ul>
-          <li>Prescription weight-loss medication acts on appetite signals. It is not a willpower product.</li>
-          <li>Semaglutide is prescribed both as an injection and in a form taken by mouth.</li>
-          <li>No needles means no injection technique to learn and no sharps to store or dispose of.</li>
+          <li>Prescription weight-loss medication <strong>acts on appetite signals</strong>. It is not a willpower product.</li>
+          <li>Semaglutide is prescribed both as an injection and <strong>as a pill taken by mouth</strong>.</li>
+          <li><strong>No needles.</strong> No injection technique to learn, nothing to store in the fridge.</li>
           <li>You start with a short online health questionnaire. A licensed clinician reviews it and decides what, if anything, is appropriate for you.</li>
-          <li>Not everyone qualifies, and it is not available in every state.</li>
+          <li><strong>Not everyone qualifies</strong>, and it is not available in every state.</li>
         </ul>
       </div>
 
@@ -348,8 +381,8 @@
       </div>
 
       <h2>Why the needle stops people</h2>
-      <p>Needle aversion is far more common than most people admit out loud. For some it is genuine fear. For others it is simpler than that: a weekly injection is a weekly reminder, it needs to be stored properly, and it has to travel with you. People picture the routine, decide it is not for them, and never get as far as finding out whether they were even eligible.</p>
-      <p>That matters, because the decision is usually made before any clinician is involved. The programme gets ruled out on the delivery method rather than on whether the treatment suits the person.</p>
+      <p><strong>Needle aversion is far more common than most people admit out loud.</strong> For some it is genuine fear. For others it is simpler than that: a weekly injection is a weekly reminder, it needs to be stored properly, and it has to travel with you. People picture the routine, decide it is not for them, and never get as far as finding out whether they were even eligible.</p>
+      <p>That matters, because the decision is usually made before any clinician is involved. <strong>The programme gets ruled out on the delivery method rather than on whether the treatment suits the person.</strong></p>
 
       <div class="callout">
         <p>None of this is a judgement about injections. For many people they are entirely fine. The point is narrower: if the needle is the only thing standing between you and finding out, that is worth knowing about.</p>
@@ -357,10 +390,10 @@
 
 
       <figure class="inline"><img src="/assets/images/oral-bottle-1200.jpg" srcset="/assets/images/oral-bottle-700.jpg 700w, /assets/images/oral-bottle-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 660px" width="1200" height="800" loading="lazy" alt="A plain bottle and a glass of water on a kitchen table"><figcaption>No sharps bin and no injection technique to learn.</figcaption></figure>
-      <h2>What the oral route actually is</h2>
-      <p>Semaglutide is the active ingredient in a well-established class of weight-management medicines. It can be prescribed as an injection, and it can also be prescribed in a form taken by mouth. The medication in this programme is compounded, meaning it is prepared for the individual patient by a licensed compounding pharmacy rather than supplied as a mass-produced branded product.</p>
+      <h2>What the pill option actually is</h2>
+      <p>Semaglutide is the active ingredient in a well-established class of weight-management medicines. It can be prescribed as an injection, and <strong>it can also be prescribed as a pill</strong>. The medication in this programme is compounded, meaning it is prepared for the individual patient by a licensed compounding pharmacy rather than supplied as a mass-produced branded product.</p>
       <p>Compounded medications are prepared under state and federal pharmacy rules by pharmacies licensed to do that work. A licensed clinician decides whether a compounded formulation is appropriate for you, and the dosing schedule is theirs to set rather than yours.</p>
-      <p>The two routes are not interchangeable and one is not automatically better than the other. What the oral route removes is the needle, the sharps box and the injection technique.</p>
+      <p>The two routes are not interchangeable and one is not automatically better than the other. <strong>What the pill option removes is the needle and the injection technique.</strong></p>
 
 
       <figure class="inline"><img src="/assets/images/oral-process-1200.jpg" srcset="/assets/images/oral-process-700.jpg 700w, /assets/images/oral-process-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 660px" width="1200" height="800" loading="lazy" alt="Hands filling in a health questionnaire on a laptop"><figcaption>The health questionnaire is the whole of step one. It takes about two minutes.</figcaption></figure>
@@ -377,14 +410,14 @@
           <div class="seq-num">2</div>
           <div>
             <h3>A licensed clinician reviews it</h3>
-            <p>They decide whether treatment is appropriate at all, and if so which form and which starting dose. Some people are told no, and that is a real outcome of the process rather than a formality.</p>
+            <p>They decide whether treatment is appropriate at all, and if so which form and which starting dose. <strong>Some people are told no</strong>, and that is a real outcome of the process rather than a formality.</p>
           </div>
         </div>
         <div class="seq-item">
           <div class="seq-num">3</div>
           <div>
             <h3>If approved, it ships to you</h3>
-            <p>Delivered to your address. Pricing is shown in full before you commit to anything, including any first-month offer.</p>
+            <p>Delivered to your address. <strong>Pricing is shown in full before you commit to anything</strong>, including any first-month offer.</p>
           </div>
         </div>
         <div class="seq-item">
