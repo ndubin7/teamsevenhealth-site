@@ -49,25 +49,36 @@
      only an offer key. This stops the page becoming an open redirect that a
      third party could use to launder traffic through our domain.
 
-     TODO BEFORE LAUNCH: paste the real PerformCB tracking links once Margo
-     confirms approval. Until then every key falls through to '/'. */
-  var OFFER_LINKS = {
-    trimrx: 'https://noklnk.com/x/6042878',   // (1000603) TrimRx Premium DTQ - US - CPS - $320
-    gala:   'https://noklnk.com/x/6042879'    // (1000629) Gala GLP-1 - US - CPS - $425
+     Each vendor declares its own parameter names because networks differ. */
+  var OFFERS = {
+    collective: {
+      url: 'https://track.revoffers.com/aff_c?offer_id=1667&aff_id=13718',
+      // Katalys/RevOffers uses source + sub1..3, NOT PerformCB's subid1..3.
+      keys: { source: 'source', click: 'sub1', session: 'sub2', vendor: 'sub3' },
+      src: 'mgid'
+    },
+    trimrx: {
+      url: 'https://noklnk.com/x/6042878',   // (1000603) TrimRx Premium DTQ - $320
+      keys: { click: 'subid1', session: 'subid2', vendor: 'subid3' }
+    },
+    gala: {
+      url: 'https://noklnk.com/x/6042879',   // (1000629) Gala GLP-1 - $425
+      keys: { click: 'subid1', session: 'subid2', vendor: 'subid3' }
+    }
   };
 
-  /* Vendor split. offer=auto sends a controlled 50/50 to the two vendors so we
-     can compare EARNINGS PER CLICK, not conversion rate: Gala pays $425 vs
-     TrimRx $320, so Gala can convert ~25% worse and still earn more.
-     The choice is sticky per visitor, otherwise a returning visitor's sale
-     could be credited against the vendor they did not actually see. */
-  var SPLIT = ['trimrx', 'gala'];
+  /* offer=auto now sends everything to Collective Peptides: observed EPC $9.47
+     vs roughly $0.85 for the PerformCB pair. The old vendors stay reachable by
+     explicit key so nothing breaks, but they get no automatic traffic. */
+  var SPLIT = ['collective'];
 
   function pickVendor() {
-    var k = 't7_vendor';
+    /* v2 key: visitors who were stuck to trimrx/gala under the old split must
+       not keep being sent there now that auto means Collective. */
+    var k = 't7_vendor_v2';
     try {
       var saved = localStorage.getItem(k);
-      if (saved && OFFER_LINKS[saved]) return saved;
+      if (saved && OFFERS[saved]) return saved;
       var chosen = SPLIT[Math.floor(Math.random() * SPLIT.length)];
       localStorage.setItem(k, chosen);
       return chosen;
@@ -84,15 +95,17 @@
   var subid2 = q.get('subid2') || '';         // our session id
   var src    = q.get('src') || 'unknown';     // which CTA was clicked
   var pv     = q.get('pv')  || '';            // advertorial variant
-  var base   = OFFER_LINKS[offer];
+  var cfg    = OFFERS[offer];
 
   var dest;
-  if (base) {
+  if (cfg) {
+    var join = cfg.url.indexOf('?') === -1 ? '?' : '&';
     var p = new URLSearchParams();
-    p.set('subid1', subid1);
-    p.set('subid2', subid2);
-    p.set('subid3', offer);
-    dest = base + '?' + p.toString();
+    if (cfg.keys.source && cfg.src) p.set(cfg.keys.source, cfg.src);
+    p.set(cfg.keys.click, subid1);
+    p.set(cfg.keys.session, subid2);
+    p.set(cfg.keys.vendor, offer);
+    dest = cfg.url + join + p.toString();
   } else {
     dest = '/';
   }
@@ -103,7 +116,7 @@
       offer_name: offer || 'unknown',
       source: src,
       page_variant: pv,
-      valid_offer: !!base,
+      valid_offer: !!cfg,
       assignment: split ? 'split' : 'forced',
       click_id: subid2
     });
