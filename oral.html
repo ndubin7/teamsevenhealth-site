@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prescription weight loss without the injections | Team7 Health</title>
+<title>Prescription weight loss, now in pill form | Team7 Health</title>
 <meta name="description" content="How the oral option in medical weight-loss programs works, who it suits, and how to check from home in a few minutes.">
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="styles.css">
@@ -254,6 +254,41 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
   }
+
+  /* ---- oral_v1: pull the first CTA above the fold and tighten the top ---- */
+  h1.headline { font-size: clamp(27px, 4.4vw, 40px); margin: 0 0 16px; }
+  .standfirst { font-size: 17px; line-height: 1.6; margin: 0 0 18px; }
+  .lead-figure { aspect-ratio: auto; height: clamp(170px, 25vw, 270px); margin: 2px auto 20px; }
+  .byline { padding: 10px 0; margin-bottom: 30px; }
+  .summary { margin: 0 0 38px; }
+  .cta-block { margin: 38px 0; }
+
+  .cta-inline {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    background: var(--accent-soft);
+    border-radius: 14px;
+    padding: 15px 18px;
+    margin: 0 0 24px;
+  }
+  .cta-inline p { margin: 0; font-size: 15px; font-weight: 600; }
+  .cta-inline .btn { flex: 0 0 auto; width: auto; }
+
+  figure.inline { margin: 30px 0 26px; }
+  figure.inline figcaption {
+    font-size: 12.5px; line-height: 1.5; color: var(--text-muted);
+    margin-top: 9px; padding-left: 2px;
+  }
+
+  .article h2 { margin-top: 38px; }
+  .seq { margin: 26px 0 30px; }
+  .faq h3 { margin-top: 24px; }
+
+  @media (max-width: 640px) {
+    .cta-inline { flex-direction: column; align-items: stretch; text-align: center; padding: 16px; }
+    .cta-inline .btn { width: 100%; }
+    .lead-figure img { max-height: none; }
+  }
 </style>
 
 <body>
@@ -281,11 +316,17 @@
 
     <div class="measure">
       <p class="kicker">Weight loss, explained</p>
-      <h1 class="headline" id="headline">The needle is the reason a lot of people never start. There is an option taken by mouth.</h1>
+      <h1 class="headline" id="headline">The needle is the reason a lot of people never start. There is a pill option.</h1>
+      <p class="standfirst">Plenty of people rule out medical weight-loss programs for a single reason, and it is not the cost or the clinic visit. It is the injection. Here is how the pill option works, who it suits, and what a licensed clinician looks at before prescribing anything.</p>
     </div>
     <figure class="lead-figure"><img id="hero-img" src="/assets/images/hero-oral-1200.jpg" srcset="/assets/images/hero-oral-700.jpg 700w, /assets/images/hero-oral-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 900px" width="1200" height="675" fetchpriority="high" alt="A woman at a kitchen table with a glass of water"></figure>
     <div class="measure">
-      <p class="standfirst">Plenty of people rule out medical weight-loss programs for a single reason, and it is not the cost or the clinic visit. It is the injection. Here is how the oral route works, who it suits, and what a licensed clinician looks at before prescribing anything.</p>
+
+      <div class="cta-inline">
+        <p>Two minutes to see whether you qualify.</p>
+        <a class='btn cta' data-cta='top' href='/go?offer=medgm'>Check the pill option <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+
       <p class="byline">Team7 Health editorial &middot; Updated September 2026 &middot; 4 minute read</p>
 
       <div class="summary">
@@ -302,7 +343,7 @@
       <div class="cta-block">
         <h3>See whether you qualify</h3>
         <p>A few questions about your health and history. No card needed to find out.</p>
-        <a class='btn cta' data-cta='early' href='/go?offer=medgm'>Check the oral option <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class='btn cta' data-cta='early' href='/go?offer=medgm'>See if you qualify <span class="arrow" aria-hidden="true">&rarr;</span></a>
         <p class="cta-note">Takes about two minutes. Reviewed by a licensed clinician.</p>
       </div>
 
@@ -314,11 +355,15 @@
         <p>None of this is a judgement about injections. For many people they are entirely fine. The point is narrower: if the needle is the only thing standing between you and finding out, that is worth knowing about.</p>
       </div>
 
+
+      <figure class="inline"><img src="/assets/images/oral-bottle-1200.jpg" srcset="/assets/images/oral-bottle-700.jpg 700w, /assets/images/oral-bottle-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 660px" width="1200" height="800" loading="lazy" alt="A plain bottle and a glass of water on a kitchen table"><figcaption>No sharps bin and no injection technique to learn.</figcaption></figure>
       <h2>What the oral route actually is</h2>
       <p>Semaglutide is the active ingredient in a well-established class of weight-management medicines. It can be prescribed as an injection, and it can also be prescribed in a form taken by mouth. The medication in this programme is compounded, meaning it is prepared for the individual patient by a licensed compounding pharmacy rather than supplied as a mass-produced branded product.</p>
       <p>Compounded medications are prepared under state and federal pharmacy rules by pharmacies licensed to do that work. A licensed clinician decides whether a compounded formulation is appropriate for you, and the dosing schedule is theirs to set rather than yours.</p>
       <p>The two routes are not interchangeable and one is not automatically better than the other. What the oral route removes is the needle, the sharps box and the injection technique.</p>
 
+
+      <figure class="inline"><img src="/assets/images/oral-process-1200.jpg" srcset="/assets/images/oral-process-700.jpg 700w, /assets/images/oral-process-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 660px" width="1200" height="800" loading="lazy" alt="Hands filling in a health questionnaire on a laptop"><figcaption>The health questionnaire is the whole of step one. It takes about two minutes.</figcaption></figure>
       <h2>How it works, step by step</h2>
       <div class="seq">
         <div class="seq-item">
@@ -369,6 +414,8 @@
         <li><strong>Anyone unwilling to be honest on the questionnaire.</strong> The review is only as good as what you tell it.</li>
       </ul>
 
+
+      <figure class="inline"><img src="/assets/images/oral-walk-1200.jpg" srcset="/assets/images/oral-walk-700.jpg 700w, /assets/images/oral-walk-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 660px" width="1200" height="800" loading="lazy" alt="A woman walking on a tree-lined street in the late afternoon"><figcaption>These are ongoing, clinically supervised programmes rather than a one-off purchase.</figcaption></figure>
       <h2>Common questions</h2>
       <div class="faq">
         <h3>Does the oral form work as well as the injection?</h3>
