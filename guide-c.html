@@ -171,6 +171,8 @@
   .cta-block h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0 0 8px; }
   .cta-block p { font-size: 15px; color: var(--text-secondary); margin: 0 0 20px; }
   .cta-block .btn { width: 100%; max-width: 320px; }
+  .summary li.tick { list-style: none; margin-left: -18px; }
+  .summary li.tick::before { content: '\2713'; color: var(--accent, #1F6F78); font-weight: 700; margin-right: 8px; }
   .cta-note { font-size: 12px; color: var(--text-muted); margin: 20px 0 0; }
 
   .disclosures {
@@ -293,8 +295,10 @@
         <ul>
           <li>Prices for compounded weight-loss medication vary widely between providers, from under $60 a month to several hundred.</li>
           <li>Much of the difference is markup and packaging, not the medication itself.</li>
-          <li>Most programs quote a monthly price that should include the clinician review and delivery.</li>
-          <li>Watch for prices that rise with your dose, or after an introductory month.</li>
+          <li>The three things worth checking on any program:</li>
+          <li class="tick">Is it the same price at any dose?</li>
+          <li class="tick">Is a multi-month plan required?</li>
+          <li class="tick">Can you cancel easily, at any time?</li>
           <li>You will see the full price before you are asked to pay.</li>
         </ul>
       </div>
@@ -302,8 +306,8 @@
       <div class="cta-block">
         <h3>See prices and check eligibility</h3>
         <p>A few quick questions, reviewed by a licensed clinician. You will see the cost before you commit to anything.</p>
-        <a class="btn cta" href="/go.html?offer=auto" data-cta="early">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <p class="cta-note">Takes a few minutes. You will be taken to our partner's secure site.</p>
+        <a class="btn cta" href="/go.html?offer=auto" data-cta="early">See if you qualify <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="cta-note">Takes less than 2 minutes. You will be taken to our partner's secure site.</p>
       </div>
 
       <h2>Why the same medication has so many different prices</h2>
@@ -326,8 +330,8 @@
       <div class="cta-block">
         <h3>See what you would pay</h3>
         <p>It takes a few minutes, and you will see your options and pricing before you commit to anything.</p>
-        <a class="btn cta" href="/go.html?offer=auto" data-cta="mid-article">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <p class="cta-note">Takes a few minutes. You will be taken to our partner's secure site.</p>
+        <a class="btn cta" href="/go.html?offer=auto" data-cta="mid-article">See what you would pay <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="cta-note">Takes less than 2 minutes. You will be taken to our partner's secure site.</p>
       </div>
 
       <h2>How getting started works</h2>
@@ -354,8 +358,8 @@
       <div class="cta-block">
         <h3>See if you qualify, and what it costs</h3>
         <p>Answer a few quick questions and a licensed clinician will take it from there.</p>
-        <a class="btn cta" href="/go.html?offer=auto" data-cta="end-of-article">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <p class="cta-note">Takes a few minutes. You will be taken to our partner's secure site.</p>
+        <a class="btn cta" href="/go.html?offer=auto" data-cta="end-of-article">See if you qualify <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="cta-note">Takes less than 2 minutes. You will be taken to our partner's secure site.</p>
       </div>
 
       
@@ -373,7 +377,7 @@
 </div>
 
 <div class="sticky-cta">
-  <a class="btn cta" href="/go.html?offer=auto" data-cta="sticky">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
+  <a class="btn cta" href="/go.html?offer=auto" data-cta="sticky">See if you qualify <span class="arrow" aria-hidden="true">&rarr;</span></a>
 </div>
 
 <script>
