@@ -391,7 +391,7 @@
   document.querySelectorAll('a[href^="/go"]').forEach(function (a) {
     a.addEventListener('click', function () {
       T7Analytics.track('offer_clickout', {
-        offer_name: 'trimrx',
+        offer_name: 'collective',
         source: a.getAttribute('data-cta') || 'unknown'
       });
     });
