@@ -545,8 +545,13 @@
   function seen() { try { return localStorage.getItem('t7_lead') === '1'; } catch (e) { return false; } }
   function mark() { try { localStorage.setItem('t7_lead', '1'); } catch (e) {} }
 
+  /* Disabled 22 Sep 2026: the popup promises an emailed guide, but the Make
+     scenario behind it (T7H Lead Capture, 7458021) only stores the address and
+     sends nothing. Re-enable by deleting LEAD_POPUP_OFF once a real guide email
+     is wired up. */
+  var LEAD_POPUP_OFF = true;
   function open(trigger) {
-    if (shown || done || seen()) return;
+    if (LEAD_POPUP_OFF || shown || done || seen()) return;
     shown = true;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
