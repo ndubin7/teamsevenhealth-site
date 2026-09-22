@@ -299,7 +299,7 @@
       <div class="cta-block">
         <h3>Find out where you stand</h3>
         <p>A few quick questions, reviewed by a licensed clinician. Most people find out in a few minutes.</p>
-        <a class="btn cta" href="/go.html?offer=auto" data-cta="early">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class='btn cta' data-cta='early' href='/go?offer=auto'>Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
         <p class="cta-note">Takes a few minutes. You will be taken to our partner's secure site.</p>
       </div>
 
@@ -323,7 +323,7 @@
       <div class="cta-block">
           <h3>Find out where you stand</h3>
           <p>A few quick questions, reviewed by a licensed clinician. You will see your options and pricing before you commit to anything.</p>
-          <a class="btn cta" href="/go.html?offer=auto" data-cta="mid-article">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class='btn cta' data-cta='mid-article' href='/go?offer=auto'>Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
           <p class="cta-note">Takes a few minutes. You will be taken to our partner's secure site.</p>
         </div>
 
@@ -363,7 +363,7 @@
       <div class="cta-block">
           <h3>See if you qualify</h3>
           <p>It takes a few minutes, and it settles the question either way.</p>
-          <a class="btn cta" href="/go.html?offer=auto" data-cta="end-of-article">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class='btn cta' data-cta='end-of-article' href='/go?offer=auto'>Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
           <p class="cta-note">Takes a few minutes. You will be taken to our partner's secure site.</p>
         </div>
 
@@ -381,7 +381,7 @@
 </div>
 
 <div class="sticky-cta">
-  <a class="btn cta" href="/go.html?offer=auto" data-cta="sticky">Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
+  <a class='btn cta' data-cta='sticky' href='/go?offer=auto'>Check your eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
 </div>
 
 <script>
@@ -443,7 +443,7 @@
     <form id="leadForm" novalidate>
       <input type="email" id="leadEmail" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address">
       <button type="submit" class="btn" id="leadSubmit">Send me the guide</button>
-      <p class="lead-consent">By entering your email you agree to receive occasional emails from Team7 Health about prescription weight-loss programs. Unsubscribe any time. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+      <p class="lead-consent">By entering your email you agree to receive occasional emails from Team7 Health about prescription weight-loss programs. Unsubscribe any time. See our <a href='/privacy'>Privacy Policy</a>.</p>
       <p class="lead-msg" id="leadMsg" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -477,20 +477,13 @@
   modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
 
-  /* Desktop: real exit intent. Mobile has no cursor, so use a scroll stall
-     near the end of the article instead - they have read it and are leaving. */
+  /* Desktop exit intent only. The mobile scroll-stall trigger was removed on
+     22 Sep 2026: it fired whenever an engaged reader paused for 9 seconds past
+     the halfway point, locking the page right beside the mid-article CTA, and
+     it captured 1 email in 692 showings. */
   document.addEventListener('mouseout', function (e) {
     if (!e.relatedTarget && e.clientY <= 0) open('exit_intent');
   });
-  var idle;
-  window.addEventListener('scroll', function () {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    if (h <= 0) return;
-    if (window.scrollY / h > 0.55) {
-      clearTimeout(idle);
-      idle = setTimeout(function () { open('scroll_stall'); }, 9000);
-    }
-  }, { passive: true });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();

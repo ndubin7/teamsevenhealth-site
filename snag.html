@@ -477,20 +477,13 @@
   modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
 
-  /* Desktop: real exit intent. Mobile has no cursor, so use a scroll stall
-     near the end of the article instead - they have read it and are leaving. */
+  /* Desktop exit intent only. The mobile scroll-stall trigger was removed on
+     22 Sep 2026: it fired whenever an engaged reader paused for 9 seconds past
+     the halfway point, locking the page right beside the mid-article CTA, and
+     it captured 1 email in 692 showings. */
   document.addEventListener('mouseout', function (e) {
     if (!e.relatedTarget && e.clientY <= 0) open('exit_intent');
   });
-  var idle;
-  window.addEventListener('scroll', function () {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    if (h <= 0) return;
-    if (window.scrollY / h > 0.55) {
-      clearTimeout(idle);
-      idle = setTimeout(function () { open('scroll_stall'); }, 9000);
-    }
-  }, { passive: true });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
